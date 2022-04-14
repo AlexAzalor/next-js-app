@@ -1,16 +1,20 @@
 import { NextPage } from 'next';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Button,
   Htag,
   P,
+  Rating,
   Tag
 } from '../components';
+import { Layout, withLayout } from '../layout/Layout';
 
 const Home: NextPage = () => {
+  const [rating, setRating] = useState<number>(4);
+  console.log('Home is render');
+
   return (
     <>
-      <Htag tag="h1">Text</Htag>
       <Button appearance='primary' arrow='right'>Кнопка</Button>
       <Button appearance='ghost' arrow='down'>Кнопка</Button>
       <P size='14'>some text</P>
@@ -20,8 +24,9 @@ const Home: NextPage = () => {
       <Tag size='m' color='primary'>Small</Tag>
       <Tag color='green'>Small</Tag>
       <Tag color='red'>111</Tag>
+      <Rating rating={rating} isEditable setRating={setRating}/>
     </>
   );
 };
 
-export default Home;
+export default withLayout(Home);
